@@ -71,4 +71,4 @@ class PanelCalculator extends HTMLElement {
   }
 }
 
-customElements.define('panel-calculator', CartRemoveButton);
+customElements.define('panel-calculator', PanelCalculator);
