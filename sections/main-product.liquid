@@ -463,6 +463,37 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+                
+                {%- if product.metafields.custom.width_options != blank and product.metafields.custom.single_panel_width != blank -%}
+                  <div class="product-form__input product-form__input--dropdown">
+                    <label class="form__label" for="Width-selector">
+                      Width
+                    </label>
+                    <div class="select">
+                      <select
+                        id="Width-selector"
+                        class="select__select"
+                        name="properties[Width]"
+                        form="{{ product_form_id }}"
+                        data-single-panel-width="{{ product.metafields.custom.single_panel_width.value }}"
+                        onchange="calculatePanels(this)"
+                      >
+                        {%- for value in product.metafields.custom.width_options.value -%}
+                          <option value="{{ value }}">{{ value }}</option>
+                        {%- endfor -%}
+                      </select>
+                      <span class="svg-wrapper">
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-form__input" id="panels-result_">
+                    <label class="form__label">Number of Panels:</label>
+                    <div class="panels-count">-</div>
+                  </div>
+                  <script src="{{ 'panel-calculator.js' | asset_url }}" defer></script>
+                {%- endif -%}
+
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
