@@ -1,4 +1,4 @@
-class PanelCalculator {
+class PanelCalculator extends HTMLElement {
   constructor() {
     this.widthSelector = document.querySelector('#Width-selector');
     this.init();
@@ -71,8 +71,4 @@ class PanelCalculator {
   }
 }
 
-// Initialize on page load
-let calculator;
-window.addEventListener('DOMContentLoaded', () => {
-  calculator = new PanelCalculator();
-});
+customElements.define('panel-calculator', CartRemoveButton);
