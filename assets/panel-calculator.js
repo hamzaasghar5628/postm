@@ -2,7 +2,7 @@ class PanelCalculator extends HTMLElement {
   constructor() {
     this.widthSelector = document.querySelector('#Width-selector');
     this.init();
-    
+    super();
     // Make the calculate method globally accessible
     window.calculatePanels = (select) => {
       this.calculatePanels(select);
